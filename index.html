@@ -1395,4 +1395,198 @@
                                 <!-- Common Faults Repaired -->
                                 <div class="bg-white border-2 border-slate-200 rounded-3xl p-6 sm:p-7">
                                     <h3 class="text-lg sm:text-xl font-black text-royal-950 mb-4 flex items-center gap-2">
-                                      
+                                        <i class="fa-solid fa-wrench text-coral-600"></i>
+                                        <span>أبرز الأعطال التي نقوم بإصلاحها</span>
+                                    </h3>
+                                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                        ${app.faults.map(fault => `
+                                            <div class="bg-snow border border-slate-200 rounded-xl px-4 py-3 flex items-center gap-2.5 text-sm font-extrabold text-royal-950">
+                                                <i class="fa-solid fa-circle-check text-skybrand-600"></i>
+                                                <span>${fault}</span>
+                                            </div>
+                                        `).join('')}
+                                    </div>
+                                </div>
+
+                                <!-- Independence Disclaimer -->
+                                <div class="bg-royal-50 border-r-4 border-coral-600 border border-royal-100 rounded-2xl p-5 flex items-start gap-3">
+                                    <i class="fa-solid fa-shield-halved text-coral-600 text-xl mt-0.5"></i>
+                                    <p class="text-xs sm:text-sm font-bold text-slate-700 leading-relaxed">
+                                        تنويه وإخلاء مسؤولية: موقع <span class="en-text font-extrabold text-royal-950">quality syana k</span> هو مركز صيانة وإصلاح مستقل للأجهزة المنزلية، ولسنا وكلاء معتمدين أو تابعين أو ممثلين لأي علامة تجارية أو شركة مصنعة.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            `;
+        }
+
+        // ==================== VIEW 4: DEDICATED FAQ PAGE (#faq) ====================
+        function renderFaqView() {
+            return `
+                <section class="hero-bg pt-8 pb-20">
+                    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div class="flex flex-wrap items-center justify-between gap-4 pb-6 mb-8 border-b border-slate-200">
+                            <div>
+                                <span class="inline-flex items-center gap-2 bg-skybrand-50 text-skybrand-700 px-3.5 py-1 rounded-full text-xs font-extrabold mb-2">
+                                    <i class="fa-solid fa-circle-question"></i>
+                                    <span>مركز المساعدة</span>
+                                </span>
+                                <h1 class="text-2xl sm:text-4xl font-black text-royal-950">سؤال وجواب</h1>
+                            </div>
+
+                            <a href="#home" class="inline-flex items-center gap-2 bg-white hover:bg-royal-50 text-royal-950 border-2 border-slate-300 hover:border-royal-800 font-extrabold px-5 py-2.5 rounded-2xl transition">
+                                <i class="fa-solid fa-arrow-right text-coral-600"></i>
+                                <span>العودة للرئيسية</span>
+                            </a>
+                        </div>
+
+                        <!-- Giant Animated 19081 Box at the Top of FAQ Page -->
+                        ${renderGiantHotlineBox('الخط الساخن الموحد للرد على استفساراتكم - quality syana k')}
+
+                        <div class="space-y-4">
+                            ${FAQS.map((item, idx) => `
+                                <details class="group bg-white border-2 border-slate-200 open:border-royal-800 rounded-2xl transition shadow-xs" ${idx === 0 ? 'open' : ''}>
+                                    <summary class="flex items-center justify-between gap-4 p-5 sm:p-6 cursor-pointer font-black text-base sm:text-lg text-royal-950">
+                                        <span class="flex items-center gap-3">
+                                            <span class="w-8 h-8 rounded-lg bg-royal-800 text-white flex items-center justify-center text-sm font-extrabold flex-shrink-0">${idx + 1}</span>
+                                            <span>${item.q}</span>
+                                        </span>
+                                        <i class="fa-solid fa-chevron-down text-coral-600 transition-transform duration-200 group-open:rotate-180 flex-shrink-0"></i>
+                                    </summary>
+                                    <div class="px-5 sm:px-6 pb-6 pt-2 text-sm sm:text-base text-slate-700 font-semibold leading-relaxed border-t border-slate-200/80">
+                                        ${item.a}
+                                    </div>
+                                </details>
+                            `).join('')}
+                        </div>
+                    </div>
+                </section>
+            `;
+        }
+
+        // ==================== VIEW 5: DEDICATED PRIVACY POLICY PAGE (#privacy - NO COOKIES) ====================
+        function renderPrivacyView() {
+            return `
+                <section class="hero-bg pt-8 pb-20">
+                    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div class="flex flex-wrap items-center justify-between gap-4 pb-6 mb-8 border-b border-slate-200">
+                            <div>
+                                <span class="inline-flex items-center gap-2 bg-royal-50 text-royal-800 px-3.5 py-1 rounded-full text-xs font-extrabold mb-2">
+                                    <i class="fa-solid fa-user-shield"></i>
+                                    <span class="en-text">No Cookies Policy</span>
+                                </span>
+                                <h1 class="text-2xl sm:text-4xl font-black text-royal-950">سياسة الخصوصية - بدون كوكيز</h1>
+                            </div>
+
+                            <a href="#home" class="inline-flex items-center gap-2 bg-white hover:bg-royal-50 text-royal-950 border-2 border-slate-300 hover:border-royal-800 font-extrabold px-5 py-2.5 rounded-2xl transition">
+                                <i class="fa-solid fa-arrow-right text-coral-600"></i>
+                                <span>العودة للرئيسية</span>
+                            </a>
+                        </div>
+
+                        <!-- Giant Animated 19081 Box at the Top of Privacy Policy Page -->
+                        ${renderGiantHotlineBox('الخط الساخن الموحد لمركز quality syana k')}
+
+                        <div class="bg-white border-2 border-slate-200 rounded-3xl p-7 sm:p-10 shadow-sm space-y-6">
+                            <div class="bg-royal-50 border-r-4 border-royal-800 border border-royal-100 rounded-2xl p-5 flex items-start gap-3.5">
+                                <i class="fa-solid fa-shield-halved text-royal-800 text-2xl mt-1"></i>
+                                <div>
+                                    <h2 class="text-xl font-black text-royal-950 mb-1">التزام كامل بالخصوصية (بدون استخدام ملفات تعريف الارتباط - Cookies)</h2>
+                                    <p class="text-sm sm:text-base font-bold text-slate-700 leading-relaxed">
+                                        يعمل موقع <span class="en-text font-black text-royal-800">quality syana k</span> بدون كوكيز نهائياً (No Cookies)، ولا يقوم بتخزين أي ملفات تتبع على أجهزة الزوار أو مراقبة نشاطهم عبر الإنترنت.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                                <div class="bg-snow border border-slate-200 rounded-2xl p-5">
+                                    <div class="w-11 h-11 rounded-xl bg-royal-800 text-white flex items-center justify-center mb-3">
+                                        <i class="fa-solid fa-ban text-xl"></i>
+                                    </div>
+                                    <h3 class="text-lg font-black text-royal-950 mb-2">1. بدون كوكيز نهائياً</h3>
+                                    <p class="text-sm text-slate-700 font-semibold leading-relaxed">
+                                        نحترم خصوصيتك الكاملة؛ لذلك لا يستخدم الموقع أي ملفات تعريف ارتباط (Cookies) ولا يجمع بيانات تصفح تلقائية لأغراض التتبع الإعلاني.
+                                    </p>
+                                </div>
+
+                                <div class="bg-snow border border-slate-200 rounded-2xl p-5">
+                                    <div class="w-11 h-11 rounded-xl bg-skybrand-600 text-white flex items-center justify-center mb-3">
+                                        <i class="fa-brands fa-whatsapp text-xl"></i>
+                                    </div>
+                                    <h3 class="text-lg font-black text-royal-950 mb-2">2. استخدام البيانات المدخلة</h3>
+                                    <p class="text-sm text-slate-700 font-semibold leading-relaxed">
+                                        البيانات التي تدخلها طوعاً في نموذج طلب الصيانة تُستخدم فقط لتنسيق زيارة الصيانة عبر واتساب فقط (<span class="en-text font-bold text-royal-950">01102670999</span>) أو الاتصال بالخط الساخن (<span class="en-text font-bold text-coral-600">19081</span>) وأرقام الاتصال (<span class="en-text font-bold text-royal-950">01226439877</span> / <span class="en-text font-bold text-royal-950">01035703366</span>).
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="space-y-4 text-sm sm:text-base text-slate-700 font-semibold leading-relaxed pt-2">
+                                <p>
+                                    <strong class="text-royal-950 font-black">3. عدم مشاركة البيانات مع أطراف خارجية:</strong> لا نقوم ببيع أو تأجير أو مشاركة أي بيانات تواصل خاصة بالعملاء مع أي جهات تسويقية أو أطراف ثالثة تحت أي ظرف.
+                                </p>
+                                <p>
+                                    <strong class="text-royal-950 font-black">4. استقلالية المركز:</strong> تنويه وإخلاء مسؤولية: موقع <span class="en-text font-bold text-royal-950">quality syana k</span> هو مركز صيانة وإصلاح مستقل للأجهزة المنزلية، ولسنا وكلاء معتمدين أو تابعين أو ممثلين لأي علامة تجارية أو شركة مصنعة.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            `;
+        }
+
+        // ==================== CLIENT-SIDE VANILLA JS HASH ROUTER ====================
+        function handleRouteChange() {
+            const rawHash = window.location.hash || '#home';
+            const cleanRoute = rawHash.replace(/^#/, '');
+            const root = document.getElementById('app-root');
+            if (!root) return;
+
+            if (cleanRoute.startsWith('brand/') || cleanRoute.startsWith('brand-')) {
+                const slug = cleanRoute.replace(/^brand[/-]/, '');
+                const brand = BRANDS.find(b => b.slug === slug);
+                document.title = brand
+                    ? `صيانة ${brand.ar} (${brand.en}) - الخط الساخن 19081 | quality syana k`
+                    : 'quality syana k | الخط الساخن 19081';
+                root.innerHTML = renderBrandView(slug);
+                window.scrollTo({ top: 0, behavior: 'instant' });
+            } else if (cleanRoute.startsWith('appliance/') || cleanRoute.startsWith('appliance-')) {
+                const slug = cleanRoute.replace(/^appliance[/-]/, '');
+                const app = APPLIANCES.find(a => a.slug === slug);
+                document.title = app
+                    ? `${app.title} - الخط الساخن 19081 | quality syana k`
+                    : 'quality syana k | الخط الساخن 19081';
+                root.innerHTML = renderApplianceView(slug);
+                window.scrollTo({ top: 0, behavior: 'instant' });
+            } else if (cleanRoute === 'faq') {
+                document.title = 'سؤال وجواب - الخط الساخن 19081 | quality syana k';
+                root.innerHTML = renderFaqView();
+                window.scrollTo({ top: 0, behavior: 'instant' });
+            } else if (cleanRoute === 'privacy') {
+                document.title = 'سياسة الخصوصية - بدون كوكيز | quality syana k';
+                root.innerHTML = renderPrivacyView();
+                window.scrollTo({ top: 0, behavior: 'instant' });
+            } else {
+                document.title = 'quality syana k | الخط الساخن 19081 - مركز صيانة مستقل للأجهزة المنزلية';
+                root.innerHTML = renderHomeView();
+                if (cleanRoute && cleanRoute !== 'home') {
+                    const section = document.getElementById(cleanRoute);
+                    if (section) {
+                        setTimeout(() => section.scrollIntoView({ behavior: 'smooth', block: 'start' }), 40);
+                    }
+                } else {
+                    window.scrollTo({ top: 0, behavior: 'instant' });
+                }
+            }
+        }
+
+        window.addEventListener('hashchange', handleRouteChange);
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', handleRouteChange);
+        } else {
+            handleRouteChange();
+        }
+    </script>
+</body>
+</html>
